@@ -87,12 +87,12 @@ if ( !empty($_POST ['submit'])){
 
 }
     
-for ($i =0; $i<$_POST['no']; $i++) {
+{for ($i =0; $i<$_POST['no']; $i++) 
     echo $pesan ;
-} else {
+} {
 
     echo "anda belum menginput nama dan jumlah";
-}
+};
 ?>
     
 </body>
