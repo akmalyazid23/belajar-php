@@ -5,9 +5,9 @@ if (isset($_POST["submit"])) {
     $nim = $_POST['nim'];
     $nama = $_POST['nama'];
     $id_jurusan = $_POST['id_jurusan'];
-    $tpt_lahir = $_POST['tpt_lahir'];
-    $tgl_lahir = $_POST['tgl_lahir'];
-    $gender = $_POST['gender'];
+    $tempat_lahir = $_POST['tpt_lahir'];
+    $tanggal_lahir = $_POST['tgl_lahir'];
+    $jenis_kelamin = $_POST['gender'];
     $alamat = $_POST['alamat'];
 
     // 1.membuat koneksi mysql
@@ -20,7 +20,7 @@ if (isset($_POST["submit"])) {
         echo "koneksi berhasil";
     }
     $sql = "insert into mahasiswa (id_jurusan, nim, nama, jenis_kelamin, tempat_lahir, tanggal_lahir, alamat)
-        values ($id_jurusan,'$nim', '$nama', '$gender', '$tpt_lahir', '$tgl_lahir', '$alamat')";
+        values ($id_jurusan,'$nim', '$nama', '$jenis_kelamin', '$tempat_lahir', '$tanggal_lahir', '$alamat')";
 
     if (mysqli_query($con, $sql)) {
         echo "New record created successfully";

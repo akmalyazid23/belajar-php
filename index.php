@@ -42,11 +42,20 @@ mysqli_close($con);
     <tr>
         <th>NIM</th>
         <th>Nama</th>
+        <th>tempat lahir</th>
+        <th>Alamat</th>
+        <th>Action</th>
+        
     </tr>
     <?php foreach($mahasiswa as $value): ?>
     <tr> 
         <td> <?php echo $value ["nim"]; ?></td>
         <td> <?php echo $value ["nama"]; ?></td>
+        <td> <?php echo $value ["tempat_lahir"]; ?></td>
+        <td> <?php echo $value ["alamat"]; ?></td>
+        <td> <?php echo $value ["jenis_kelamin"]; ?></td>
+        <td> <?php echo $value ["tanggal_lahir"]; ?></td>
+        <td> Edit | Delete </td>
     </tr>
     <?php endforeach; ?>
 
