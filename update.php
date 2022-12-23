@@ -1,4 +1,6 @@
 <?php
+if (isset($_POST['id'])) {
+    $id = $_GET['id'];
 
     // 1.membuat koneksi mysql
     $con = mysqli_connect("localhost", "root", "", "fakultas");
@@ -12,22 +14,23 @@
 
 
 
-//3. membaca data dari data table mysql
-$query = "SELECT * FROM mahasiswa WHERE id=2";
+    //3. membaca data dari data table mysql
+    $query = "SELECT * FROM mahasiswa WHERE id=$id";
 
-//4. menampilkan data
-$result = mysqli_query($con,$query);
-$mahasiswa = [];
-if ($result) {
-    //tampilkan data satu-persatu
-    while($row = mysqli_fetch_assoc($result)){
-        $mahasiswa = $row;         
+    //4. menampilkan data
+    $result = mysqli_query($con, $query);
+    $mahasiswa = [];
+    if ($result) {
+        //tampilkan data satu-persatu
+        while ($row = mysqli_fetch_assoc($result)) {
+            $mahasiswa = $row;
+        }
+        mysqli_free_result($result);
     }
-    mysqli_free_result($result);
-}
 
-// tutup koneksi mysql
-mysqli_close($con);
+    // tutup koneksi mysql
+    mysqli_close($con);
+}
 
 //tangkap data dari form submit 
 if (isset($_POST["submit"])) {
@@ -49,7 +52,7 @@ if (isset($_POST["submit"])) {
         echo "koneksi berhasil";
     }
     $sql = "UPDATE mahasiswa SET nim='$nim',nama='$nama',id_jurusan='$id_jurusan',tempat_lahir='$tempat_lahir',
-    tanggal_lahir='$tanggal_lahir',alamat='$alamat' WHERE id=2";
+    tanggal_lahir='$tanggal_lahir',alamat='$alamat' WHERE id=$id";
 
     if (mysqli_query($con,$sql)) {
         echo "New record created successfully";
@@ -77,9 +80,9 @@ if (isset($_POST["submit"])) {
         NIM: <input type="text" name="nim" value="<?php echo $nim; ?>"><br>
         Nama: <input type="text" name="nama" value="<?php echo $nama; ?>"><br>
         ID Jurusan: <input type="number" name="id_jurusan" value="<?php echo $id_jurusan; ?>"><br>
-        Jenis Kelamin: <input type="text" name="gender" value="<?php echo $jenis_kelamin; ?>"><br>
-        Tempat Lahir: <input type="text" name="tpt_lahir" value="<?php echo $tempat_lahir; ?>"><br>
-        Tanggal Lahir (yyyy-mm-dd): <input type="text" name="tgl_lahir" value="<?php echo $tanggal_lahir; ?>"><br>
+        Jenis Kelamin: <input type="text" name="gender" value="<?php echo $gender; ?>"><br>
+        Tempat Lahir: <input type="text" name="tempat_lahir" value="<?php echo $tempat_lahir; ?>"><br>
+        Tanggal Lahir (yyyy-mm-dd): <input type="text" name="tanggal_lahir" value="<?php echo $tanggal_lahir; ?>"><br>
         Alamat: <input type="text" name="alamat" value="<?php echo $alamat; ?>"><br>
         <button type="submit" name="submit">Tambah Data</button> 
     </form>

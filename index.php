@@ -43,6 +43,8 @@ mysqli_close($con);
         <th>NIM</th>
         <th>Nama</th>
         <th>tempat lahir</th>
+        <th>Tanggal Lahir</th>
+        <th>Jenis Kelamin</th>
         <th>Alamat</th>
         <th>Action</th>
         
@@ -52,10 +54,13 @@ mysqli_close($con);
         <td> <?php echo $value ["nim"]; ?></td>
         <td> <?php echo $value ["nama"]; ?></td>
         <td> <?php echo $value ["tempat_lahir"]; ?></td>
-        <td> <?php echo $value ["alamat"]; ?></td>
-        <td> <?php echo $value ["jenis_kelamin"]; ?></td>
         <td> <?php echo $value ["tanggal_lahir"]; ?></td>
-        <td> Edit | Delete </td>
+        <td> <?php echo $value ["jenis_kelamin"]; ?></td>
+        <td> <?php echo $value ["alamat"]; ?></td>
+        <td> 
+            <a href="<?php echo "update.php?=id". $value ['id']; ?>">Edit </a>
+            <a href="<?php echo "delete.php?=id". $value ['id']; ?>">Delete </a>
+        </td>
     </tr>
     <?php endforeach; ?>
 
